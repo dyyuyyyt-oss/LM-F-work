@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Large Cats – Image Gallery</title>
+  <style>
+    body { font-family: Georgia, serif; max-width: 1100px; margin: 0 auto; padding: 20px; text-align: center; }
+    .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+    figure { margin: 0; }
+    /* same height, width auto keeps original proportions */
+    .gallery img { height: 240px; width: auto; border-radius: 6px; }
+    figcaption { font-size: 0.85em; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Large Cats</h1>
+    <p><a href="index.html">Back to News Hub</a></p>
+  </header>
+  <main>
+    <div class="gallery">
+      <figure>
+        <img src="pic/lion.jpg" alt="An old male lion at Chobe">
+        <figcaption>Lion – Charles J. Sharp, <a href="https://commons.wikimedia.org/wiki/File:Lion_(Panthera_leo)_old_male_Chobe.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></figcaption>
+      </figure>
+      <figure>
+        <img src="pic/leopard.jpg" alt="A leopard in Kruger National Park">
+        <figcaption>Leopard – Charles J. Sharp, <a href="https://commons.wikimedia.org/wiki/File:Leopard_(Panthera_pardus_pardus)_Kruger.jpg">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></figcaption>
+      </figure>
+      <figure>
+        <img src="pic/tiger.jpg" alt="An Amur tiger at Buffalo Zoo">
+        <figcaption>Tiger – Dave Pape, <a href="https://commons.wikimedia.org/wiki/File:Panthera_tigris_altaica_13_-_Buffalo_Zoo.jpg">Wikimedia Commons</a>, public domain</figcaption>
+      </figure>
+    </div>
+  </main>
+</body>
+</html>
