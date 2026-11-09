@@ -1,0 +1,980 @@
+/* =========================================================
+   Riverside Big Cat Guardians - main stylesheet
+   One external stylesheet shared by every page.
+
+   Contents
+   1.  Design tokens (colors, fonts, spacing)
+   2.  Base elements
+   3.  Accessibility helpers
+   4.  Site header and navigation (flexbox)
+   5.  Page layout helpers (container, sections, grids)
+   6.  Home page hero (CSS grid)
+   7.  Figures and images
+   8.  Cards (species cards, team cards)
+   9.  Status badges
+   10. Lists (simple and nested)
+   11. Tables
+   12. Chart
+   13. Video and transcript
+   14. Forms
+   15. Buttons
+   16. Footer
+   17. Small screens
+   18. Reduced motion
+   ========================================================= */
+
+
+/* ---------- 1. Design tokens ---------- */
+:root {
+  /* Colors: savanna gold on deep canopy green */
+  --canopy: #1F4A3A;        /* main brand green */
+  --canopy-deep: #16352A;   /* footer and dark panels */
+  --gold: #D9A034;          /* accent: lines, markers, focus ring */
+  --gold-soft: #F4DFA9;     /* light gold for text on dark green */
+  --mist: #EEF1EA;          /* page background */
+  --paper: #FFFFFF;         /* cards, tables, form fields */
+  --ink: #1C2A23;           /* main text */
+  --ink-soft: #46554D;      /* secondary text and captions */
+  --line: #C9D2C6;          /* borders and dividers */
+  --link: #1D5E45;          /* links on light backgrounds */
+
+  /* Conservation status colors (always shown with a text label) */
+  --endangered-ink: #8E2424;
+  --endangered-bg: #F8E1DE;
+  --vulnerable-ink: #6E4700;
+  --vulnerable-bg: #FBEBC2;
+  --near-ink: #24563F;
+  --near-bg: #DCEEE2;
+
+  /* Typefaces */
+  --font-display: "Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Atkinson Hyperlegible", Verdana, Arial, sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2.5rem;
+  --space-xl: 4rem;
+
+  --radius: 12px;
+  --measure: 66ch;          /* comfortable line length for paragraphs */
+}
+
+
+/* ---------- 2. Base elements ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--mist);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--canopy);
+  line-height: 1.15;
+  margin: 0 0 var(--space-s);
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+p {
+  margin: 0 0 var(--space-s);
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--link);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--canopy-deep);
+  text-decoration-color: var(--gold);
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  display: block;
+}
+
+strong {
+  font-weight: 700;
+}
+
+
+/* ---------- 3. Accessibility helpers ---------- */
+
+/* Hide text visually but keep it for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* "Skip to main content" link: appears when it gets keyboard focus */
+.skip-link {
+  position: absolute;
+  left: var(--space-s);
+  top: -4rem;
+  z-index: 100;
+  padding: var(--space-xs) var(--space-s);
+  background: var(--canopy);
+  color: var(--paper);
+  font-weight: 700;
+  border-radius: 0 0 8px 8px;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* One clear focus ring for every interactive element */
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+
+/* ---------- 4. Site header and navigation (flexbox) ---------- */
+.site-header {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s) var(--space-l);
+  padding-block: var(--space-s);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--canopy);
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  line-height: 1.1;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  display: inline-block;
+  padding: 0.35rem 0;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.nav-list a:hover {
+  border-bottom-color: var(--line);
+}
+
+/* The page you are on gets a gold underline */
+.nav-list a[aria-current="page"] {
+  border-bottom-color: var(--gold);
+  color: var(--canopy);
+}
+
+
+/* ---------- 5. Page layout helpers ---------- */
+.container {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+main {
+  padding-bottom: var(--space-xl);
+}
+
+.section {
+  padding-top: var(--space-xl);
+}
+
+/* Inner page title area */
+.page-intro {
+  padding-top: var(--space-l);
+}
+
+.lead {
+  font-size: 1.25rem;
+  color: var(--ink-soft);
+}
+
+/* Responsive grid of equal columns (CSS grid) */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-m);
+}
+
+/* Two columns: content and side panel (CSS grid) */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--space-l);
+  align-items: start;
+}
+
+/* "What we do" blocks on the home page */
+.feature {
+  padding-top: var(--space-s);
+  border-top: 4px solid var(--gold);
+}
+
+.feature p {
+  margin-bottom: 0;
+}
+
+/* Highlighted panel, used for the next event */
+.panel {
+  padding: var(--space-m);
+  background: var(--canopy);
+  color: var(--paper);
+  border-radius: var(--radius);
+}
+
+.panel h2 {
+  color: var(--paper);
+}
+
+.panel a {
+  color: var(--gold-soft);
+}
+
+.panel a:hover {
+  color: var(--paper);
+}
+
+/* Contain floated images inside their section */
+.clearfix {
+  display: flow-root;
+}
+
+.spaced-heading {
+  margin-top: var(--space-l);
+}
+
+.source-note {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+
+/* ---------- 6. Home page hero (CSS grid) ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: var(--space-l);
+  align-items: center;
+  padding-top: var(--space-l);
+}
+
+/* The club name is the big, memorable moment of the site */
+.hero-title {
+  font-size: clamp(3rem, 8.5vw, 6.25rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-m);
+}
+
+.hero-title span {
+  display: block;
+}
+
+.hero-title .hero-title-cats {
+  color: var(--ink);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin-top: var(--space-m);
+}
+
+
+/* ---------- 7. Figures and images ---------- */
+figure {
+  margin: 0;
+}
+
+figure img,
+figure video {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+
+/* Image that floats to the right, with text wrapping around it */
+.float-right {
+  float: right;
+  width: min(45%, 24rem);
+  margin: 0.4rem 0 var(--space-s) var(--space-l);
+}
+
+.wide-figure {
+  margin-top: var(--space-m);
+}
+
+.wide-figure img {
+  border-radius: var(--radius);
+}
+
+
+/* ---------- 8. Cards ---------- */
+
+/* Species cards: the left border color matches the status badge */
+.species-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border-radius: var(--radius);
+  border-left: 6px solid var(--line);
+  overflow: hidden;
+}
+
+.species-card.is-endangered { border-left-color: var(--endangered-ink); }
+.species-card.is-vulnerable { border-left-color: var(--vulnerable-ink); }
+
+.species-card img {
+  border-radius: 0;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.species-card-body {
+  padding: var(--space-m);
+}
+
+.species-card figcaption {
+  margin: 0;
+  padding: 0.6rem var(--space-m) 0;
+}
+
+.species-card h3 {
+  margin-bottom: var(--space-xs);
+}
+
+/* Fact list inside each species card */
+.fact-list {
+  margin: var(--space-s) 0 0;
+}
+
+.fact-list dt {
+  font-weight: 700;
+  color: var(--canopy);
+  font-size: 0.95rem;
+}
+
+.fact-list dd {
+  margin: 0 0 var(--space-xs);
+}
+
+/* Team members on the About page */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: var(--space-m);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.avatar {
+  flex: 0 0 3.5rem;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--canopy);
+  color: var(--gold-soft);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.team-name {
+  display: block;
+  font-weight: 700;
+}
+
+.team-role {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+
+/* ---------- 9. Status badges ---------- */
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge-endangered { color: var(--endangered-ink); background: var(--endangered-bg); }
+.badge-vulnerable { color: var(--vulnerable-ink); background: var(--vulnerable-bg); }
+.badge-near       { color: var(--near-ink);       background: var(--near-bg); }
+
+
+/* ---------- 10. Lists ---------- */
+
+/* Simple list with gold check marks */
+.check-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.6rem;
+  max-width: var(--measure);
+}
+
+.check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 0.35rem;
+  width: 0.55rem;
+  height: 0.95rem;
+  border: solid var(--gold);
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
+
+/* Numbered list of threats, with a nested list of details under each */
+.threat-list {
+  counter-reset: threat;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.threat-list > li {
+  counter-increment: threat;
+  position: relative;
+  padding: var(--space-m) var(--space-m) var(--space-m) 4.5rem;
+  margin-bottom: var(--space-s);
+  background: var(--paper);
+  border-radius: var(--radius);
+}
+
+.threat-list > li::before {
+  content: counter(threat);
+  position: absolute;
+  left: var(--space-m);
+  top: var(--space-m);
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--canopy);
+  color: var(--gold-soft);
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.threat-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--canopy);
+  margin-bottom: 0.25rem;
+}
+
+/* Nested lists inside the complex lists */
+.detail-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.detail-list li {
+  margin-bottom: 0.35rem;
+  max-width: var(--measure);
+}
+
+.detail-list li::marker {
+  color: var(--gold);
+}
+
+/* "How you can help" list: groups side by side */
+.help-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-m);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.help-list > li {
+  padding-top: var(--space-s);
+  border-top: 4px solid var(--gold);
+}
+
+.help-group {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--canopy);
+}
+
+
+/* ---------- 11. Tables ---------- */
+
+/* Wrapper lets wide tables scroll sideways on small screens */
+.table-wrap {
+  overflow-x: auto;
+  margin-top: var(--space-m);
+  background: var(--paper);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+
+.data-table {
+  width: 100%;
+  min-width: 40rem;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.data-table caption {
+  padding: var(--space-s) var(--space-m);
+  text-align: left;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--canopy);
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+}
+
+/* Column headers */
+.data-table thead th {
+  background: var(--canopy);
+  color: var(--paper);
+  border-top: 0;
+}
+
+.data-table thead tr + tr th {
+  background: var(--canopy-deep);
+  font-weight: 400;
+}
+
+.data-table thead th[colspan] {
+  border-bottom: 2px solid var(--gold);
+}
+
+/* Row headers and row-group headers */
+.data-table tbody th {
+  color: var(--canopy);
+}
+
+.data-table tbody th[scope="rowgroup"] {
+  background: var(--mist);
+  font-family: var(--font-display);
+}
+
+/* Light stripes on alternate rows make long rows easier to follow */
+.data-table.striped tbody tr:nth-child(even) td,
+.data-table.striped tbody tr:nth-child(even) th[scope="row"] {
+  background: #F7F9F5;
+}
+
+.data-table tfoot td {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  background: var(--mist);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+
+/* ---------- 12. Chart ---------- */
+.chart {
+  padding: var(--space-m);
+  background: var(--paper);
+  border-radius: var(--radius);
+}
+
+.chart svg {
+  display: block;
+  width: 100%;
+  max-width: 36rem;
+  font-family: var(--font-body);
+}
+
+.chart-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-m);
+  margin: 0 0 var(--space-s);
+  padding: 0;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.chart-key li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.key-swatch {
+  display: inline-block;
+  width: 1.5rem;
+  height: 0.9rem;
+  border-radius: 3px;
+}
+
+.key-low  { background: var(--canopy); }
+.key-high { background: #C7D8CE; border: 1.5px solid var(--canopy); }
+
+
+/* ---------- 13. Video and transcript ---------- */
+.video-figure {
+  max-width: 50rem;
+}
+
+.video-figure video {
+  background: var(--canopy-deep);
+}
+
+.transcript {
+  margin-top: var(--space-s);
+  padding: var(--space-s) var(--space-m);
+  background: var(--paper);
+  border-radius: var(--radius);
+  max-width: 50rem;
+}
+
+.transcript summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--link);
+}
+
+.transcript dl {
+  margin: var(--space-s) 0 0;
+}
+
+.transcript dt {
+  font-weight: 700;
+  color: var(--canopy);
+}
+
+.transcript dd {
+  margin: 0 0 var(--space-s);
+}
+
+
+/* ---------- 14. Forms ---------- */
+.volunteer-form {
+  padding: var(--space-m);
+  background: var(--paper);
+  border-radius: var(--radius);
+}
+
+.form-note {
+  padding: var(--space-s);
+  background: var(--vulnerable-bg);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+fieldset {
+  margin: 0 0 var(--space-m);
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--canopy);
+}
+
+.field {
+  margin-bottom: var(--space-s);
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.hint {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid #7C8A82;
+  border-radius: 8px;
+}
+
+textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  border-color: var(--canopy);
+}
+
+/* Checkbox and radio rows: large, easy-to-hit targets */
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0;
+}
+
+.choice input {
+  width: 1.3rem;
+  height: 1.3rem;
+  accent-color: var(--canopy);
+  flex-shrink: 0;
+}
+
+.form-status {
+  margin-top: var(--space-s);
+  padding: var(--space-s);
+  background: var(--near-bg);
+  color: var(--near-ink);
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+
+/* ---------- 15. Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border: 2px solid var(--canopy);
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--canopy);
+  color: var(--paper);
+}
+
+.btn-primary:hover {
+  background: var(--canopy-deep);
+  color: var(--paper);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--canopy);
+}
+
+.btn-secondary:hover {
+  background: var(--paper);
+  color: var(--canopy-deep);
+}
+
+
+/* ---------- 16. Footer ---------- */
+.site-footer {
+  background: var(--canopy-deep);
+  color: #E8E2CF;
+  padding-block: var(--space-l) var(--space-m);
+  font-size: 1rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-l);
+}
+
+.site-footer h2 {
+  color: var(--paper);
+  font-size: 1.15rem;
+}
+
+.site-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer li {
+  margin-bottom: 0.45rem;
+}
+
+.site-footer a {
+  color: var(--gold-soft);
+}
+
+.site-footer a:hover {
+  color: var(--paper);
+}
+
+.footer-bottom {
+  margin-top: var(--space-l);
+  font-size: 0.95rem;
+}
+
+.footer-bottom p {
+  max-width: none;
+  margin: 0;
+  padding-top: var(--space-s);
+  border-top: 1px solid #3A5A4C;
+}
+
+
+/* ---------- 17. Small screens ---------- */
+@media (max-width: 52rem) {
+  .hero,
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  /* Floated image becomes full width so text is not squeezed */
+  .float-right {
+    float: none;
+    width: 100%;
+    margin: 0 0 var(--space-m);
+  }
+}
+
+@media (max-width: 30rem) {
+  body {
+    font-size: 1.0625rem;
+  }
+
+  .threat-list > li {
+    padding-left: var(--space-m);
+    padding-top: 4rem;
+  }
+}
+
+
+/* ---------- 18. Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

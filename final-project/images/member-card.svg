@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <!-- Card shadow and body -->
+  <rect x="34" y="40" width="732" height="430" rx="28" fill="#16352A" opacity="0.25"/>
+  <rect x="24" y="24" width="732" height="430" rx="28" fill="#1F4A3A"/>
+
+  <!-- Gold band with tiger-stripe cut-outs on the left edge -->
+  <path d="M52 24h112v430H52a28 28 0 0 1-28-28V52a28 28 0 0 1 28-28z" fill="#D9A034"/>
+  <g fill="#1F4A3A">
+    <path d="M24 92c40 6 80 2 140-14v20c-56 18-96 22-140 16z"/>
+    <path d="M24 176c48 4 92-6 140-26v18c-50 24-92 32-140 28z"/>
+    <path d="M24 262c44 2 88-4 140-20v20c-52 16-96 20-140 18z"/>
+    <path d="M24 350c46 6 90 0 140-18v18c-50 20-94 26-140 20z"/>
+  </g>
+
+  <!-- Paw print logo -->
+  <g transform="translate(640 70)">
+    <circle cx="40" cy="40" r="40" fill="#16352A"/>
+    <g fill="#D9A034" transform="translate(-11.2 -9.6) scale(1.6)">
+      <ellipse cx="20.5" cy="27" rx="4.2" ry="5.4" transform="rotate(-20 20.5 27)"/>
+      <ellipse cx="27.5" cy="20" rx="4.3" ry="5.6" transform="rotate(-6 27.5 20)"/>
+      <ellipse cx="36.5" cy="20" rx="4.3" ry="5.6" transform="rotate(6 36.5 20)"/>
+      <ellipse cx="43.5" cy="27" rx="4.2" ry="5.4" transform="rotate(20 43.5 27)"/>
+      <path d="M32 30.5c-5.2 0-11 6.6-11 11.6 0 3.6 2.8 5.6 6 5.6 2.2 0 3.4-1.1 5-1.1s2.8 1.1 5 1.1c3.2 0 6-2 6-5.6 0-5-5.8-11.6-11-11.6z"/>
+    </g>
+  </g>
+
+  <!-- Card text -->
+  <g font-family="Arial, Helvetica, sans-serif" fill="#FFFFFF">
+    <text x="204" y="104" font-size="26" font-weight="700">Riverside Big Cat Guardians</text>
+    <text x="204" y="138" font-size="20" fill="#E8E2CF">Volunteer member card</text>
+
+    <text x="204" y="250" font-size="16" fill="#E8E2CF">Name</text>
+    <text x="204" y="286" font-size="32" font-weight="700">Your name here</text>
+    <line x1="204" y1="302" x2="700" y2="302" stroke="#D9A034" stroke-width="2"/>
+
+    <text x="204" y="370" font-size="16" fill="#E8E2CF">Member since</text>
+    <text x="204" y="400" font-size="24" font-weight="700">2026</text>
+
+    <text x="450" y="370" font-size="16" fill="#E8E2CF">Favorite big cat</text>
+    <text x="450" y="400" font-size="24" font-weight="700">You choose!</text>
+  </g>
+</svg>

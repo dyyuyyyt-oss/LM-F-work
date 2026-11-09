@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="1200" height="540">
+  <!-- Background -->
+  <rect width="1200" height="540" fill="#1F4A3A"/>
+
+  <!-- Title -->
+  <text x="80" y="78" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#FFFFFF">Big cat days to remember</text>
+  <text x="80" y="112" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#E8E2CF">The same dates every year. We hold an event on or near each one.</text>
+
+  <!-- Timeline: January 1 (x=80) to December 31 (x=1120) -->
+  <line x1="80" y1="300" x2="1120" y2="300" stroke="#E8E2CF" stroke-width="3"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#E8E2CF" text-anchor="middle">
+    <!-- Month start ticks and labels -->
+    <line x1="80"   y1="292" x2="80"   y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="124"  y="330">Jan</text>
+    <line x1="168"  y1="292" x2="168"  y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="208"  y="330">Feb</text>
+    <line x1="248"  y1="292" x2="248"  y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="292"  y="330">Mar</text>
+    <line x1="336"  y1="292" x2="336"  y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="379"  y="330">Apr</text>
+    <line x1="422"  y1="292" x2="422"  y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="466"  y="330">May</text>
+    <line x1="510"  y1="292" x2="510"  y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="553"  y="330">Jun</text>
+    <line x1="596"  y1="292" x2="596"  y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="640"  y="330">Jul</text>
+    <line x1="684"  y1="292" x2="684"  y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="728"  y="330">Aug</text>
+    <line x1="772"  y1="292" x2="772"  y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="815"  y="330">Sep</text>
+    <line x1="858"  y1="292" x2="858"  y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="902"  y="330">Oct</text>
+    <line x1="946"  y1="292" x2="946"  y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="989"  y="330">Nov</text>
+    <line x1="1032" y1="292" x2="1032" y2="308" stroke="#E8E2CF" stroke-width="2"/><text x="1076" y="330">Dec</text>
+    <line x1="1120" y1="292" x2="1120" y2="308" stroke="#E8E2CF" stroke-width="2"/>
+  </g>
+
+  <!-- Leader lines from each day to its label -->
+  <g stroke="#D9A034" stroke-width="2">
+    <line x1="254"  y1="300" x2="254"  y2="240"/>
+    <line x1="675"  y1="300" x2="675"  y2="380"/>
+    <line x1="710"  y1="300" x2="710"  y2="240"/>
+    <line x1="921"  y1="300" x2="921"  y2="170"/>
+    <line x1="1026" y1="300" x2="1026" y2="380"/>
+    <line x1="1040" y1="300" x2="1040" y2="450"/>
+  </g>
+
+  <!-- Day markers -->
+  <g fill="#D9A034" stroke="#1F4A3A" stroke-width="3">
+    <circle cx="254"  cy="300" r="9"/>
+    <circle cx="675"  cy="300" r="9"/>
+    <circle cx="710"  cy="300" r="9"/>
+    <circle cx="921"  cy="300" r="9"/>
+    <circle cx="1026" cy="300" r="9"/>
+    <circle cx="1040" cy="300" r="9"/>
+  </g>
+
+  <!-- Labels: date on the first line, day name on the second -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#FFFFFF">
+    <text x="264" y="214" font-weight="700" fill="#D9A034">March 3</text>
+    <text x="264" y="236">World Wildlife Day</text>
+
+    <text x="665" y="400" font-weight="700" fill="#D9A034" text-anchor="end">July 29</text>
+    <text x="665" y="422" text-anchor="end">International Tiger Day</text>
+
+    <text x="720" y="214" font-weight="700" fill="#D9A034">August 10</text>
+    <text x="720" y="236">World Lion Day</text>
+
+    <text x="911" y="144" font-weight="700" fill="#D9A034" text-anchor="end">October 23</text>
+    <text x="911" y="166" text-anchor="end">International Snow Leopard Day</text>
+
+    <text x="1016" y="400" font-weight="700" fill="#D9A034" text-anchor="end">November 29</text>
+    <text x="1016" y="422" text-anchor="end">International Jaguar Day</text>
+
+    <text x="1030" y="470" font-weight="700" fill="#D9A034" text-anchor="end">December 4</text>
+    <text x="1030" y="492" text-anchor="end">International Cheetah Day</text>
+  </g>
+</svg>
