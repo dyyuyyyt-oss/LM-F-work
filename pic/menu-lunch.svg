@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+  <!-- Lunch pattern: little green leaves on mint -->
+  <rect width="60" height="60" fill="#EAF6EC"/>
+  <g fill="#B5DDB9">
+    <path d="M10 26c0-10 8-16 18-16 0 10-8 16-18 16z"/>
+    <path d="M40 56c0-10 8-16 18-16 0 10-8 16-18 16z"/>
+  </g>
+</svg>

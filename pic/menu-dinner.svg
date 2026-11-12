@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 90 90">
+  <!-- Dinner pattern: stars and a moon on a night sky -->
+  <rect width="90" height="90" fill="#1E2240"/>
+  <g fill="#F5D98B" opacity="0.35">
+    <path d="M20 10l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
+    <circle cx="70" cy="30" r="1.5"/>
+    <circle cx="45" cy="55" r="1.2"/>
+    <path d="M68 62a10 10 0 1 0 10 14a8 8 0 1 1-10-14z"/>
+    <circle cx="15" cy="75" r="1.5"/>
+  </g>
+</svg>

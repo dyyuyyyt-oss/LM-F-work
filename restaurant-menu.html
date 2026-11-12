@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunny Side Cafe Menus</title>
+  <style>
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background-color: #F4F4F4;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333333;
+      margin-bottom: 10px;
+    }
+
+    /* Shared style for all three menus */
+    .menu {
+      display: inline-block;
+      vertical-align: top;
+      box-sizing: border-box;   /* keeps each menu exactly 400px by 550px, including padding and border */
+      width: 400px;
+      height: 550px;
+      margin: 20px;             /* space between the menus */
+      padding: 30px 35px;       /* space between the border and the text */
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .menu h2 {
+      text-align: center;
+      font-size: 32px;
+      margin: 0 0 5px 0;
+    }
+
+    .menu .hours {
+      text-align: center;
+      font-style: italic;
+      margin: 0 0 15px 0;
+    }
+
+    .menu h3 {
+      font-size: 18px;
+      margin: 15px 0 5px 0;
+      padding-bottom: 3px;
+      border-bottom: 1px solid;
+    }
+
+    .menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu li {
+      margin: 6px 0;
+      font-size: 16px;
+    }
+
+    .price {
+      float: right;
+      font-weight: bold;
+    }
+
+    /* Breakfast menu */
+    .breakfast {
+      background-image: url("pic/menu-breakfast.svg");
+      background-repeat: repeat;
+      background-position: top left;
+      border: 6px solid #F2C14E;
+      color: #5A3E00;
+    }
+
+    /* Lunch menu */
+    .lunch {
+      background-image: url("pic/menu-lunch.svg");
+      background-repeat: repeat;
+      background-position: center;
+      border: 6px dashed #4E9A5B;
+      color: #1F4D2A;
+    }
+
+    /* Dinner menu */
+    .dinner {
+      background-image: url("pic/menu-dinner.svg");
+      background-repeat: repeat;
+      background-position: bottom right;
+      border: 6px double #F5D98B;
+      color: #FFFFFF;
+    }
+
+    .dinner h2,
+    .dinner h3 {
+      color: #F5D98B;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Sunny Side Cafe</h1>
+  <p>Fresh food all day long</p>
+
+  <!-- Breakfast menu -->
+  <div class="menu breakfast">
+    <h2>Breakfast</h2>
+    <p class="hours">7:00 a.m. to 11:00 a.m.</p>
+    <h3>Food</h3>
+    <ul>
+      <li>Pancake stack with maple syrup <span class="price">$7.50</span></li>
+      <li>Two eggs, toast and bacon <span class="price">$8.00</span></li>
+      <li>Blueberry muffin <span class="price">$3.25</span></li>
+      <li>Yogurt with granola and fruit <span class="price">$5.50</span></li>
+      <li>Avocado toast <span class="price">$6.75</span></li>
+    </ul>
+    <h3>Drinks</h3>
+    <ul>
+      <li>Coffee <span class="price">$2.50</span></li>
+      <li>Fresh orange juice <span class="price">$3.50</span></li>
+      <li>Hot chocolate <span class="price">$3.00</span></li>
+    </ul>
+  </div>
+
+  <!-- Lunch menu -->
+  <div class="menu lunch">
+    <h2>Lunch</h2>
+    <p class="hours">11:00 a.m. to 3:00 p.m.</p>
+    <h3>Food</h3>
+    <ul>
+      <li>Grilled chicken sandwich <span class="price">$9.50</span></li>
+      <li>Tomato basil soup <span class="price">$5.75</span></li>
+      <li>Caesar salad <span class="price">$8.25</span></li>
+      <li>Cheeseburger and fries <span class="price">$10.50</span></li>
+      <li>Veggie wrap <span class="price">$8.50</span></li>
+    </ul>
+    <h3>Drinks</h3>
+    <ul>
+      <li>Iced tea <span class="price">$2.75</span></li>
+      <li>Lemonade <span class="price">$3.00</span></li>
+      <li>Sparkling water <span class="price">$2.25</span></li>
+    </ul>
+  </div>
+
+  <!-- Dinner menu -->
+  <div class="menu dinner">
+    <h2>Dinner</h2>
+    <p class="hours">5:00 p.m. to 9:00 p.m.</p>
+    <h3>Food</h3>
+    <ul>
+      <li>Spaghetti and meatballs <span class="price">$14.50</span></li>
+      <li>Grilled salmon with rice <span class="price">$18.00</span></li>
+      <li>Roast chicken and vegetables <span class="price">$16.25</span></li>
+      <li>Mushroom risotto <span class="price">$15.00</span></li>
+      <li>Chocolate lava cake <span class="price">$6.50</span></li>
+    </ul>
+    <h3>Drinks</h3>
+    <ul>
+      <li>Hot tea <span class="price">$2.50</span></li>
+      <li>Apple cider <span class="price">$3.50</span></li>
+      <li>Milkshake <span class="price">$4.75</span></li>
+    </ul>
+  </div>
+
+</body>
+</html>
